@@ -5,10 +5,13 @@ from discord.embeds import Embed
 from discord.ext import commands
 
 #Create Bot
-bot = commands.Bot(command_prefix = ">")
+bot = commands.Bot(command_prefix = ".")
 
 #Var
 members =[]
+
+file = open("token","r")
+token = file.read()
 
 #Functions
 def getmember(user):
@@ -35,28 +38,28 @@ async def on_message(message:discord.message.Message):
         getmember(user)
 
     #Clear
-    if message.content.startswith('$clear'):
+    if message.content.startswith('.clear'):
         msg = []
         async for newmessage in message.channel.history(limit=100):
             msg.append(newmessage)
         await message.channel.delete_messages(msg)
 
     #Help
-    if message.content.startswith('$help'):
+    if message.content.startswith('.help'):
 
         helpmessage = Embed(title="Help Information")
-        helpmessage.add_field(name="Prefix",value="$",inline=False)
-        helpmessage.add_field(name="melden",value="Setzt den Status auf ✋",inline=True)
+        helpmessage.add_field(name="Prefix",value=".",inline=False)
+        helpmessage.add_field(name="m",value="Setzt den Status auf ✋",inline=True)
         helpmessage.add_field(name="hoch",value="Setzt den Status auf 👍",inline=True)
         helpmessage.add_field(name="runter",value="Setzt den Status auf 👎",inline=True)
-        helpmessage.add_field(name="reset",value="Setzt den Status zurück",inline=True)
+        helpmessage.add_field(name="r",value="Setzt den Status zurück",inline=True)
         helpmessage.add_field(name="allreset",value="Setzt den Status aller zurück",inline=True)
         helpmessage.add_field(name="help",value="Zeigt diesen Helpkontext an",inline=True)
-        helpmessage.add_field(name="Beispiel",value="$melden : Torben --> ✋ Torben",inline=True)
+        helpmessage.add_field(name="Beispiel",value=".m : Torben --> ✋ Torben",inline=True)
         await message.channel.send(embed = helpmessage)
 
     #Status setzen
-    if message.content.startswith('$melden'):
+    if message.content.startswith('.m'):
         user = message.author
         if user.nick != None:
             nick = user.nick
@@ -68,7 +71,7 @@ async def on_message(message:discord.message.Message):
         await user.edit(nick= '{i} {n}'.format(n = nick, i= '✋'))
         print('done')   
 
-    if message.content.startswith('$hoch'):
+    if message.content.startswith('.hoch'):
         user = message.author
         if user.nick != None:
             nick = user.nick
@@ -80,7 +83,7 @@ async def on_message(message:discord.message.Message):
         await user.edit(nick= '{i} {n}'.format(n = nick, i= '👍'))
         print('done')    
 
-    if message.content.startswith('$runter'):
+    if message.content.startswith('.runter'):
         user = message.author
         if user.nick != None:
             nick = user.nick
@@ -92,7 +95,7 @@ async def on_message(message:discord.message.Message):
         await user.edit(nick= '{i} {n}'.format(n = nick, i= '👎'))
         print('done')    
 
-    if message.content.startswith('$deadinside'):
+    if message.content.startswith('.deadinside'):
         user = message.author
         if user.nick != None:
             nick = user.nick
@@ -105,7 +108,7 @@ async def on_message(message:discord.message.Message):
         print('done')    
     
     #Status reseten
-    if message.content.startswith('$reset'):
+    if message.content.startswith('.r'):
         user = message.author
         if user.nick != None:
             nick = user.nick
@@ -118,7 +121,7 @@ async def on_message(message:discord.message.Message):
             print('done')
     
     #Reset all
-    if message.content.startswith('$allreset'):
+    if message.content.startswith('.allreset'):
         #print(members)
         for member in members:
             if member.nick != None:
@@ -132,4 +135,4 @@ async def on_message(message:discord.message.Message):
                 print('done')
             
 #run this shit
-bot.run('token')
+bot.run(token)
