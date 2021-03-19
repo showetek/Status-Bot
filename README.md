@@ -1,6 +1,6 @@
 # **Status-Bot**
-## **Beschreibung**
-*Ein Bot für Discord der die Statusfunktionen von BigBlueButton ergänzt.*
+## **Description**
+*A bot for Discord that adds the status functions of BigBlueButton.*
 
 ## <ins>Disclaimer</ins>
 This version is still a PRE-RELEASE and probably not quit ready for production as for instance the bot doesn't check for permissions on some hard cmds like the bulk(clear) command.
@@ -34,7 +34,7 @@ python3 -m pip install -U -r requirments.txt
 # Windows
 py -3 -m pip install -U -r requirments.txt
 ```
-3. Insert your bot token into the file 'token'
+3. Insert your bot token into the file 'token' and make sure that your bot has ``SERVER MEMBERS INTENT`` privileges
 4. Run the bot using:
 ```sh
 # Linux/macOS
@@ -44,7 +44,7 @@ python3 bot.py
 py -3 bot.py
 ```
 
-## **Aktuell entwickelt von:**
+## **Currently developed by:**
 * [Torben Heine](https://github.com/showetek)
 
 ## **Copyright and license**
@@ -53,11 +53,11 @@ py -3 bot.py
 >This project is licensed under the [GNU General Public License v3.0](https://github.com/showetek/Status-Bot/blob/main/LICENSE)
 
 ## **Libraries**
-*Folgende externe Bibliotheken werden weitergehend im Code genutzt:*
+*The following external libraries are used further in the code:*
 
 ### API wrapper:
 * [discord.py](https://github.com/Rapptz/discord.py)
 
 ## **Current version and Info**
-    @version     0.1.1 PRE-RELEASE
+    @version     0.1.4 PRE-RELEASE
     @build       Passing
