@@ -1,11 +1,15 @@
 # **Status-Bot**
-## **Description**
+## **Description and <ins>Disclaimer</ins>**
 *A bot for Discord that adds the status functions of BigBlueButton.*
 
-## <ins>Disclaimer</ins>
 This version is still a PRE-RELEASE and probably not quit ready for production as for instance the bot doesn't check for permissions on some hard cmds like the bulk(clear) command.
 
 **Use at your own risk!**
+
+### Hosting
+If you dont have the resources to host this bot on your own, you can add the bot to your Discord server using this link:
+
+[Add this bot to my Discord server](https://discord.com/api/oauth2/authorize?client_id=806472644425285642&permissions=201419776&scope=bot)
 
 ## **Key Features**
 * Discord-Bot using the modern Python API wrapper [Discord.py](https://github.com/Rapptz/discord.py)
