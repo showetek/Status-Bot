@@ -4,7 +4,7 @@
 #  * @author      Torben Heine
 #  * @copyright   Copyright (c) 2021, Torben Heine
 #  * @github      https://github.com/showetek
-#  * @version     0.1.4 PRE-RELEASE
+#  * @version     0.1.5 PRE-RELEASE
 
 #import
 import discord

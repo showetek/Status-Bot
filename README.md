@@ -63,5 +63,5 @@ py -3 bot.py
 * [discord.py](https://github.com/Rapptz/discord.py)
 
 ## **Current version and Info**
-    @version     0.1.4 PRE-RELEASE
+    @version     0.1.5 PRE-RELEASE
     @build       Passing
