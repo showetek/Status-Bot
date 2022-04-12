@@ -9,7 +9,7 @@
 #import
 import discord
 from discord.ext import commands
-from discord.ext.commands.errors import CommandNotFound
+from discord.ext.commands.errors import CommandNotFound, CommandInvokeError
 from discord.embeds import Embed
 
 #Create Bot
@@ -21,7 +21,7 @@ bot = commands.Bot(command_prefix = ".", help_command=None, intents=intents)
 #Var
 file = open("token","r")
 token = file.read()
-file.close
+file.close()
 
 #Functions
 async def changenick(message, icon):
@@ -48,20 +48,24 @@ async def on_message(message:discord.message.Message):
     else:
         await bot.process_commands(message)
 
-#Command not found exception
+#Command exception
 @bot.event
 async def on_command_error(message:discord.message.Message, error):
     if isinstance(error, CommandNotFound):
         await message.channel.send(error)
         print("Catching exception: {0}".format(error))
+    elif isinstance(error, CommandInvokeError) and hasattr(error.original, 'text'):
+        #error.original.text to get only the HTTP response text
+        await message.channel.send(error.original.text)
+        print("Catching exception: {0.__class__.__name__}: {0.text}".format(error.original))
     else:
         raise error
 
 #Clear
 @bot.command()
-async def clear(message:discord.message.Message):
+async def clear(message:discord.message.Message, limit):
     msg = []
-    async for newmessage in message.channel.history(limit=100):
+    async for newmessage in message.channel.history(limit=int(limit)):
         msg.append(newmessage)
     await message.channel.delete_messages(msg)
 
